@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node awcodeAtlas.js",
     "start:postgres": "node awcodePostgres.js",
+    "start:mysql": "node awcodeMySQL.js",
+    "start:mysql:join": "node awcodeMySQLJoin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Javi",
@@ -16,6 +18,7 @@
     "express": "^4.16.3",
     "lodash": "^4.17.11",
     "mongoose": "^8.0.0",
+    "mysql2": "^3.24.6",
     "pg": "^8.23.1"
   }
 }

@@ -23,6 +23,11 @@
           <!-- This paragraph displays the name of the current item in the list. -->
           <p>
             <%=item.name%>
+            <% if (typeof item.priority_name !== 'undefined' && item.priority_name) { %>
+              <span class="badge" style="background-color: <%= item.priority_color %>;">
+                <%= item.priority_name %>
+              </span>
+            <% } %>
           </p>
         </div>
 
@@ -37,6 +42,15 @@
         <form class="item" action="/" method="post">
           <!-- An input field for the user to type a new item name. -->
           <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+
+          <% if (typeof priorities !== 'undefined' && priorities.length > 0) { %>
+            <select name="priorityId" class="priority-select" title="Selecciona urgencia">
+              <option value="">⚪ Sin urgencia</option>
+              <% priorities.forEach(function(p){ %>
+                <option value="<%= p.id %>"><%= p.icon %> <%= p.name %></option>
+              <% }) %>
+            </select>
+          <% } %>
 
           <!-- A submit button for the form to add a new item to the list. The value of the button is set to the listTitle. -->
           <button type="submit" name="list" value="<%= listTitle %>">+</button>
