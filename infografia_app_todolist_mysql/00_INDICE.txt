@@ -1,0 +1,16 @@
+LA VIDA DE UNA TAREA - NODE + EXPRESS + MYSQL
+
+12 laminas ordenadas. Incluye las ultimas versiones revisadas.
+
+01. Node.js: JavaScript fuera del navegador
+02. npm trae las herramientas; require las carga
+03. Navegador, servidor web y base de datos
+04. Arranque e inicialización de MySQL
+05. GET /: encontrar Today y preparar sus tareas
+06. Del SELECT a objetos JavaScript con mysql2
+07. Objetos JavaScript y texto JSON
+08. EJS: datos y plantilla generan HTML
+09. Añadir: formulario, POST, INSERT y redirección
+10. Borrar una tarea por su ID
+11. Listas personalizadas y orden de rutas
+12. async/await y recorrido completo de la petición
