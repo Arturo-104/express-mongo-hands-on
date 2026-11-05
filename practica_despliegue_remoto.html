@@ -1,0 +1,291 @@
+<!-- ============================================================================== -->
+<!-- PLANTILLA PARA CANVAS LMS: CÓPIALA DIRECTAMENTE EN EL EDITOR HTML (</>)       -->
+<!-- ============================================================================== -->
+<!-- NOTA: Diseñada con CSS 100% inline para que Canvas no elimine ningún estilo.  -->
+<!-- ============================================================================== -->
+
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #1e293b; background-color: #f8fafc; padding: 25px 15px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); max-width: 960px; margin: 0 auto;">
+
+  <!-- CABECERA PRINCIPAL -->
+  <div style="background: linear-gradient(135deg, #064e3b 0%, #059669 50%, #10b981 100%); color: #ffffff; padding: 35px 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25);">
+    <h1 style="margin: 0 0 12px 0; font-size: 26px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">☁️ Práctica Avanzada: Despliegue en la Nube con Express y MongoDB Atlas</h1>
+    <p style="margin: 0 0 18px 0; font-size: 15.5px; color: #ecfdf5; max-width: 800px; line-height: 1.6;">
+      Fork en GitHub, arquitectura Cloud (Backend en <strong>Render / GCP / AWS</strong> + DBaaS en <strong>MongoDB Atlas</strong>), regla <code>0.0.0.0/0</code> y mejora con <strong>desplegable de listas dinámico</strong>.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">⏱️ Duración estimada: 2.5 horas</span>
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">🍴 Requisito: Fork obligatorio</span>
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">🚀 Cloud: Render, GCP, AWS, Atlas</span>
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">📦 Entregables: URL pública + Capturas + Vídeo 1 min</span>
+    </div>
+  </div>
+
+  <!-- INTRODUCCIÓN Y OBJETIVOS -->
+  <div style="background-color: #ecfdf5; border-left: 5px solid #059669; padding: 18px 22px; border-radius: 8px; margin-bottom: 30px; color: #064e3b;">
+    <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">🌍 El Salto de "Localhost" al Mundo Real</div>
+    <p style="margin: 0; font-size: 14.5px; line-height: 1.6;">
+      En esta práctica daremos el gran salto a producción: realizarás un <strong>Fork en GitHub</strong>, desplegarás el archivo [<code>awcodeAtlas.js</code>](file:///Users/fjbanezares/express-mongo-hands-on/awcodeAtlas.js) en un proveedor de infraestructura Cloud (sugerido <strong>Render</strong>, con opciones en <strong>Google Cloud Run</strong> o <strong>AWS</strong>) conectado a una base de datos gestionada en <strong>MongoDB Atlas</strong>. Además, implementarás una <strong>mejora personalizada con tu nombre</strong> (un menú desplegable interactivo para saltar de una lista a otra) y verificarás la app en vivo desde tu teléfono móvil.
+    </p>
+  </div>
+
+  <!-- FASE 0: FORK OBLIGATORIO EN GITHUB -->
+  <div style="background: #ffffff; border: 2px solid #059669; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(5, 150, 105, 0.08);">
+    <div style="display: inline-block; background: #059669; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 0 (Obligatorio)</div>
+    <h2 style="color: #064e3b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Hacer Fork del Repositorio en GitHub</h2>
+
+    <div style="background-color: #fffbeb; border-left: 4px solid #d97706; padding: 14px 18px; border-radius: 6px; margin-bottom: 15px; color: #78350f; font-size: 14px;">
+      <strong>⚠️ POR QUÉ ES IMPRESCINDIBLE EL FORK:</strong> Plataformas como Render, AWS y Google Cloud Run necesitan conectarse a un repositorio de GitHub que <strong>pertenezca a tu propia cuenta</strong> para poder compilar y desplegar el código automáticamente.
+    </div>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 8px 0;">Pasos para el Fork:</h3>
+    <ol style="font-size: 14px; padding-left: 20px; margin: 0 0 15px 0;">
+      <li>Entra en el repositorio original: <a href="https://github.com/fjbanezares/express-mongo-hands-on" target="_blank" rel="noopener" style="color: #059669; font-weight: 600; text-decoration: underline;">github.com/fjbanezares/express-mongo-hands-on</a>.</li>
+      <li>Pulsa el botón <strong>Fork</strong> (arriba a la derecha) y luego <strong>Create fork</strong>.</li>
+      <li>Clona <strong>tu fork</strong> en tu ordenador para realizar las modificaciones de código:</li>
+    </ol>
+
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 0 0;"><code># Clona TU propio fork (sustituye TU_USUARIO por tu nombre de usuario de GitHub)
+git clone https://github.com/TU_USUARIO/express-mongo-hands-on.git
+
+cd express-mongo-hands-on</code></pre>
+  </div>
+
+  <!-- FASE 1: MONGODB ATLAS Y EL SECRETO DE 0.0.0.0/0 -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <div style="display: inline-block; background: #059669; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 1</div>
+    <h2 style="color: #064e3b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Configuración de MongoDB Atlas y la Regla 0.0.0.0/0</h2>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">1. Crear Clúster M0 (Gratuito) y Usuario de Base de Datos</h3>
+    <ol style="font-size: 14px; padding-left: 20px; margin: 0 0 15px 0;">
+      <li>Entra en <a href="https://www.mongodb.com/cloud/atlas" target="_blank" rel="noopener" style="color: #059669; font-weight: 600;">mongodb.com/cloud/atlas</a> y crea un clúster gratuito (<strong>Shared M0</strong>).</li>
+      <li>En <strong>Security &gt; Database Access</strong>, crea un usuario (ej: <code>appUser</code>) con una contraseña segura. <em>¡Anota bien la contraseña!</em></li>
+    </ol>
+
+    <!-- ALERTA CRÍTICA: 0.0.0.0/0 -->
+    <div style="background-color: #fef2f2; border-left: 5px solid #dc2626; padding: 20px 22px; border-radius: 8px; color: #7f1d1d; margin-bottom: 15px;">
+      <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">🚨 ¡ATENCIÓN CRÍTICA: Por qué DEBES poner 0.0.0.0/0 en Network Access!</div>
+      <p style="font-size: 14px; margin: 0 0 8px 0;">
+        En Atlas ve a <strong>Security &gt; Network Access &gt; Add IP Address</strong> y selecciona <strong>Allow Access from Anywhere</strong> (que añade la IP <code>0.0.0.0/0</code>).
+      </p>
+      <p style="font-size: 14px; margin: 0 0 8px 0; font-weight: 600;">
+        ¿Por qué si no haces esto la aplicación en la nube va a "petar" con error de conexión?
+      </p>
+      <p style="font-size: 13.5px; margin: 0; line-height: 1.6;">
+        En tu casa, tu ordenador tiene una IP fija o conocida. Pero los servidores en la nube como <strong>Render</strong>, <strong>Google Cloud Run</strong> o <strong>AWS</strong> funcionan mediante contenedores efímeros cuya IP pública de salida <strong>cambia constantemente con cada reinicio o petición</strong>.<br>
+        Si dejas en Atlas solo tu IP local, tu app funcionará en tu ordenador, pero en cuanto Render intente conectarse, el cortafuegos de MongoDB Atlas bloqueará la petición con el temido error <code>MongoServerSelectionError: connection timed out</code>.<br>
+        <em>Nota de seguridad:</em> Permitir <code>0.0.0.0/0</code> es el estándar en PaaS/Serverless; la seguridad descansa en la autenticación criptográfica de tu usuario y contraseña (<code>SCRAM-SHA-256</code>) y en no exponer tu cadena de conexión en GitHub.
+      </p>
+    </div>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">2. Obtener tu Connection String</h3>
+    <p style="font-size: 14px; margin: 0 0 6px 0;">En Atlas, pulsa <strong>Connect &gt; Drivers (Node.js)</strong> y copia tu URL:</p>
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 12px 16px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13px; overflow-x: auto; line-height: 1.5; margin: 6px 0;"><code>mongodb+srv://appUser:&lt;password&gt;@cluster0.abcde.mongodb.net/todolistDB?retryWrites=true&w=majority</code></pre>
+  </div>
+
+  <!-- FASE 2: RETO DE CÓDIGO OBLIGATORIO (DESPLEGABLE PERSONALIZADO) -->
+  <div style="background: #ffffff; border: 2px solid #8b5cf6; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 6px 15px -2px rgba(139, 92, 246, 0.1);">
+    <div style="display: inline-block; background: #8b5cf6; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Reto de Código Obligatorio</div>
+    <h2 style="color: #5b21b6; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">🌟 Mejora de Código: Desplegable de Navegación («Listas tareas de XXX»)</h2>
+
+    <p style="font-size: 14.5px; margin: 0 0 15px 0;">
+      Antes de desplegar en la nube, implementaremos una mejora diferencial en la interfaz: un <strong>desplegable en la cabecera</strong> que consulte todas las listas existentes en MongoDB Atlas y permita cambiar de una a otra con un solo clic.
+    </p>
+
+    <div style="background-color: #faf5ff; border-left: 4px solid #8b5cf6; padding: 12px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 14px; color: #4c1d95;">
+      <strong>🏷️ FACTOR DIFERENCIAL PERSONALIZADO:</strong> El desplegable debe titularse obligatoriamente <strong><code>Listas tareas de XXX</code></strong>, donde <strong><code>XXX</code></strong> es tu <strong>nombre y apellido real</strong> (ejemplo: <em>"Listas tareas de Laura Sánchez"</em>).
+    </div>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">Paso A: Modificar el Backend (awcodeAtlas.js)</h3>
+    <p style="font-size: 14px; margin: 0 0 6px 0;">En <code>awcodeAtlas.js</code>, asegura que la conexión use variable de entorno y que las rutas <code>GET /</code> y <code>GET /:customListName</code> consulten todas las listas para enviarlas a la vista:</p>
+
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 15px 0;"><code>// 1. Configuración de conexión segura con variable de entorno
+const MONGODB_ATLAS_URI = process.env.MONGODB_URI || "tu_uri_de_atlas_aqui";
+mongoose.connect(MONGODB_ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// 2. En la ruta GET / y en GET /:customListName:
+// Consultamos todas las listas existentes antes de renderizar
+const allLists = await List.find({}, "name");
+
+res.render("list", { 
+    listTitle: "Today", 
+    newListItems: foundItems,
+    allLists: allLists   // 👈 Añadir esta variable
+});</code></pre>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">Paso B: Modificar la Vista EJS (views/list.ejs)</h3>
+    <p style="font-size: 14px; margin: 0 0 6px 0;">En <code>views/list.ejs</code>, añade el siguiente bloque dentro de <code>&lt;div class="box" id="heading"&gt;</code> justo debajo de <code>&lt;h1&gt;&lt;%= listTitle %&gt;&lt;/h1&gt;</code>:</p>
+
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13px; overflow-x: auto; line-height: 1.5; margin: 8px 0 15px 0;"><code>&lt;!-- DESPLEGABLE DINÁMICO DE NAVEGACIÓN ENTRE LISTAS --&gt;
+&lt;% if (typeof allLists !== 'undefined' &amp;&amp; allLists.length &gt; 0) { %&gt;
+  &lt;div style="padding-bottom: 18px; text-align: center;"&gt;
+    &lt;label for="listNav" style="color: #ffffff; font-size: 13.5px; display: block; margin-bottom: 6px; font-weight: 500;"&gt;
+      📋 Listas tareas de XXX:  &lt;!-- 👈 REEMPLAZA XXX POR TU NOMBRE --&gt;
+    &lt;/label&gt;
+    &lt;select id="listNav" 
+            onchange="if(this.value) window.location.href = (this.value === 'Today' ? '/' : '/' + encodeURIComponent(this.value));"
+            style="padding: 7px 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; background: #ffffff; color: #333; cursor: pointer; outline: none;"&gt;
+      &lt;option value=""&gt;-- Cambiar de lista --&lt;/option&gt;
+      &lt;option value="Today" &lt;%= listTitle === 'Today' ? 'selected' : '' %&gt;&gt;📅 Today&lt;/option&gt;
+      &lt;% allLists.forEach(function(l) { %&gt;
+        &lt;% if (l.name !== 'Today') { %&gt;
+          &lt;option value="&lt;%= l.name %&gt;" &lt;%= listTitle === l.name ? 'selected' : '' %&gt;&gt;
+            📌 &lt;%= l.name %&gt;
+          &lt;/option&gt;
+        &lt;% } %&gt;
+      &lt;% }); %&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;% } %&gt;</code></pre>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">Paso C: Subir tus mejoras a tu Fork en GitHub</h3>
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 12px 16px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13px; margin: 6px 0;"><code>git add .
+git commit -m "feat: desplegable de listas personalizado y soporte para Atlas"
+git push origin main</code></pre>
+  </div>
+
+  <!-- FASE 3: DESPLIEGUE EN LA NUBE (RENDER Y ALTERNATIVAS) -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <div style="display: inline-block; background: #059669; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 3</div>
+    <h2 style="color: #064e3b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Despliegue del Backend en la Nube</h2>
+
+    <!-- OPCIÓN PRINCIPAL: RENDER -->
+    <div style="background-color: #f0fdf4; border: 2px solid #059669; padding: 20px; border-radius: 10px; margin-bottom: 25px;">
+      <h3 style="color: #065f46; font-size: 17px; margin: 0 0 10px 0; display: flex; align-items: center; gap: 8px;">
+        ⭐ Opción A (Recomendada): Despliegue en Render
+      </h3>
+      <ol style="font-size: 14px; padding-left: 20px; margin: 0 0 12px 0;">
+        <li>Regístrate en <a href="https://render.com/" target="_blank" rel="noopener" style="color: #059669; font-weight: 600;">render.com</a> con tu cuenta de GitHub.</li>
+        <li>Haz clic en <strong>New + &gt; Web Service</strong>.</li>
+        <li>Selecciona <strong>TU FORK</strong> (<code>TU_USUARIO/express-mongo-hands-on</code>).</li>
+        <li>Configura los campos:
+          <ul style="margin-top: 6px;">
+            <li><strong>Name:</strong> <code>todolist-tu-nombre</code></li>
+            <li><strong>Region:</strong> Frankfurt (EU) u Ohio (US)</li>
+            <li><strong>Runtime:</strong> <code>Node</code></li>
+            <li><strong>Build Command:</strong> <code>npm install</code></li>
+            <li><strong>Start Command:</strong> <code>node awcodeAtlas.js</code></li>
+            <li><strong>Instance Type:</strong> <code>Free</code></li>
+          </ul>
+        </li>
+        <li style="margin-top: 8px;">
+          <strong>Variables de Entorno (Crucial):</strong> En la pestaña <em>Environment Variables</em>, añade:
+          <br><strong>Key:</strong> <code>MONGODB_URI</code>
+          <br><strong>Value:</strong> <em>Tu cadena completa de MongoDB Atlas con tu usuario y contraseña</em>.
+        </li>
+        <li style="margin-top: 8px;">Pulsa <strong>Deploy Web Service</strong>.</li>
+      </ol>
+      <p style="font-size: 13.5px; color: #047857; margin: 0;"><em>En unos minutos Render emitirá tu URL pública oficial con HTTPS (ej: <code>https://todolist-tu-nombre.onrender.com</code>).</em></p>
+    </div>
+
+    <!-- OTRAS NUBES -->
+    <h3 style="color: #334155; font-size: 16px; margin: 20px 0 10px 0;">🚀 Alternativas Cloud para Explorar:</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+      <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 16px; border-radius: 8px;">
+        <h4 style="margin: 0 0 6px 0; color: #1e293b; font-size: 15px;">🌐 Google Cloud Platform (Cloud Run)</h4>
+        <p style="font-size: 13px; color: #475569; margin: 0 0 8px 0;">
+          Despliegue Serverless de contenedores. Escala a 0 instancias si no hay tráfico para no consumir crédito.
+        </p>
+        <span style="font-size: 12px; background: #e2e8f0; padding: 3px 8px; border-radius: 4px; color: #334155;">GCP Console &gt; Cloud Run</span>
+      </div>
+      <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 16px; border-radius: 8px;">
+        <h4 style="margin: 0 0 6px 0; color: #1e293b; font-size: 15px;">⚡ Amazon Web Services (AWS App Runner)</h4>
+        <p style="font-size: 13px; color: #475569; margin: 0 0 8px 0;">
+          Servicio gestionado que compila directamente desde GitHub a producción en AWS con balanceador de carga.
+        </p>
+        <span style="font-size: 12px; background: #e2e8f0; padding: 3px 8px; border-radius: 4px; color: #334155;">AWS Console &gt; App Runner</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FASE 4: VERIFICACIÓN MULTIDISPOSITIVO -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <div style="display: inline-block; background: #059669; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 4</div>
+    <h2 style="color: #064e3b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Verificación Multidispositivo en Vivo</h2>
+
+    <ol style="font-size: 14px; padding-left: 20px; margin: 0 0 15px 0;">
+      <li>Abre la URL pública de tu app desde tu ordenador.</li>
+      <li>Crea varias listas usando la URL (ej: <code>/trabajo</code>, <code>/compras</code>) y comprueba cómo el desplegable <strong>"Listas tareas de XXX"</strong> las incorpora automáticamente.</li>
+      <li><strong>Prueba desde tu móvil:</strong> Abre la misma URL pública desde el navegador de tu teléfono móvil (conectado a red 4G/5G, fuera del WiFi).</li>
+      <li>Crea una tarea desde el móvil y cambia de lista usando el desplegable.</li>
+      <li>Entra en <strong>MongoDB Atlas &gt; Database &gt; Browse Collections</strong> y verifica que los documentos están persistidos en la nube.</li>
+    </ol>
+  </div>
+
+  <!-- FASE 5: VÍDEO DE REFLEXIÓN -->
+  <div style="background: #ffffff; border: 2px solid #10b981; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 6px 15px -2px rgba(16, 185, 129, 0.15);">
+    <div style="display: inline-block; background: #10b981; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 5</div>
+    <h2 style="color: #064e3b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Reflexión en Vídeo (Máximo 1 Minuto) 🎥</h2>
+    <p style="font-size: 14.5px; margin: 0 0 15px 0;">
+      Grábate en vídeo (webcam o captura de pantalla con voz clara, <strong>duración máxima: 60 segundos</strong>) respondiendo a los siguientes tres puntos:
+    </p>
+
+    <div style="background-color: #ecfdf5; border-left: 5px solid #059669; padding: 18px 20px; border-radius: 8px; color: #064e3b;">
+      <div style="font-weight: 700; font-size: 15px; margin-bottom: 10px;">🎙️ Los 3 Puntos Obligatorios del Vídeo:</div>
+      <ol style="font-size: 14px; padding-left: 20px; margin: 0;">
+        <li style="margin-bottom: 10px;">
+          <strong>1. El sentimiento de desplegar en la nube y demostración en vivo:</strong><br>
+          Muestra en el vídeo tu aplicación corriendo en su dominio HTTPS público, enseña tu desplegable <em>"Listas tareas de XXX"</em> funcionando y expresa qué se siente al tener una web accesible desde cualquier lugar y dispositivo sin depender de tu máquina local.
+        </li>
+        <li style="margin-bottom: 10px;">
+          <strong>2. La potencia de NO tener el motor de base de datos en tu ordenador (DBaaS):</strong><br>
+          Explica lo interesante y liberador que resulta no tener un proceso pesado de MongoDB consumiendo RAM y disco en tu equipo, delegando en MongoDB Atlas la réplica, los backups automáticos y la alta disponibilidad.
+        </li>
+        <li>
+          <strong>3. Seguridad Cloud y el papel de 0.0.0.0/0:</strong><br>
+          Explica brevemente por qué fue imprescindible abrir la red a <code>0.0.0.0/0</code> en Atlas ante las IPs dinámicas de Render/Cloud Run y cómo las variables de entorno protegen tus credenciales en GitHub.
+        </li>
+      </ol>
+    </div>
+    <p style="font-size: 13.5px; color: #64748b; margin: 12px 0 0 0;"><em>Puedes subir el vídeo a Canvas Studio, Loom, Google Drive, YouTube (enlace oculto) o adjuntar el archivo (.mp4/.webm) en la entrega.</em></p>
+  </div>
+
+  <!-- FASE 6: ENTREGABLES Y RÚBRICA -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <h2 style="color: #064e3b; font-size: 20px; margin: 0 0 15px 0; font-weight: 700;">6. Entregables y Rúbrica de Calificación</h2>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 0 0 10px 0;">Contenido a adjuntar en Canvas:</h3>
+    <ul style="list-style: none; padding-left: 0; font-size: 14px; margin: 0 0 25px 0;">
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">🍴 <strong>Enlace a TU FORK en GitHub:</strong> Demostrando los commits con tu desplegable implementado.</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">🔗 <strong>URL Pública activa:</strong> Enlace a tu aplicación funcionando en la nube con HTTPS (ej: <code>https://mi-todolist.onrender.com</code>).</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">📸 <strong>Captura de pantalla de MongoDB Atlas:</strong> En la sección <em>Browse Collections</em> mostrando las tareas guardadas en la nube.</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">📸 <strong>Captura de pantalla de la Web:</strong> Mostrando el selector desplegable <em>"Listas tareas de XXX"</em> con tu nombre real.</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">🎥 <strong>Vídeo reflexivo (máximo 60 segundos):</strong> Con tu demostración en vivo y respuesta a los 3 puntos obligatorios.</li>
+    </ul>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 0 0 12px 0;">Rúbrica de Calificación (Total: 10 Puntos)</h3>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px; border: 1px solid #e2e8f0;">
+        <thead>
+          <tr style="background-color: #f8fafc;">
+            <th style="border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; color: #334155;">Criterio</th>
+            <th style="border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; color: #334155; width: 90px;">Puntos</th>
+            <th style="border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; color: #334155;">Descripción del nivel excelente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Fork en GitHub y Despliegue Cloud Activo</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #059669; font-weight: 700;">2.5 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Práctica desplegada desde su propio Fork en GitHub a Render/GCP/AWS con URL pública HTTPS totalmente operativa.</td>
+          </tr>
+          <tr style="background-color: #fbfcfe;">
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Mejora de Código: Desplegable Personalizado</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #059669; font-weight: 700;">2.5 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Consulta exitosa de listas en Atlas con Mongoose, navegación dinámica y titulación obligatoria con el nombre del alumno.</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Persistencia Atlas y Seguridad (0.0.0.0/0 y Env Vars)</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #059669; font-weight: 700;">2.0 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Configuración de Network Access para IPs dinámicas y uso correcto de <code>process.env.MONGODB_URI</code> sin filtrar contraseñas en GitHub.</td>
+          </tr>
+          <tr style="background-color: #fbfcfe;">
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Vídeo Reflexivo (≤ 60 seg)</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #059669; font-weight: 700;">3.0 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Vídeo conciso (≤ 60 seg) mostrando la app en la nube y expresando con madurez técnica la ventaja de no tener la base de datos en su máquina.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

@@ -257,3 +257,111 @@ async function startServer() {
 // Arrancamos el servidor
 startServer();
 
+// ==============================================================================
+// 🧠 SUPLEMENTO DIDÁCTICO: ¿CÓMO FUNCIONA LA CONCURRENCIA EN NODE.JS?
+//    (Entendiendo 'async', 'await' y el 'Event Loop' sin dolor de cabeza)
+// ==============================================================================
+/*
+  Para los estudiantes que se inician en Node.js, la concurrencia puede parecer
+  misteriosa: ¿Cómo puede un servidor programado en un lenguaje de UN SOLO HILO
+  (Single Thread) atender a miles de usuarios a la vez sin congelarse?
+
+  La respuesta está en la combinación de tres piezas:
+  1. La palabra clave 'async'
+  2. La palabra clave 'await'
+  3. El motor incansable: el 'Event Loop' (Bucle de Eventos)
+
+  ------------------------------------------------------------------------------
+  1. LA PALABRA 'async': AVISANDO A LA MÁQUINA VIRTUAL
+  ------------------------------------------------------------------------------
+  Cuando declaras una función normal:
+      function sumar(a, b) { return a + b; }
+  Node sabe que esa función se ejecuta de principio a fin del tirón, sin pausas,
+  en unos pocos microsegundos.
+
+  Pero cuando le pones 'async' delante:
+      app.get("/", async (req, res) => { ... })
+  Le estás diciendo a la Máquina Virtual V8 de Node:
+  "¡Ojo! Esta función no es de un solo tirón. Es una función especial que
+  contiene 'estaciones de parada'. Trátala de forma asíncrona y devuelve una
+  Promesa, porque en varios momentos se pausará y me tocará volver a ella más tarde".
+
+  ------------------------------------------------------------------------------
+  2. LA PALABRA 'await': LA ESTACIÓN DE PARADA LOCAL
+  ------------------------------------------------------------------------------
+  Dentro de esa función, cada vez que ves un 'await':
+      const [items] = await pool.query("SELECT * FROM items WHERE list_id = ?", [listId]);
+
+  Ocurre algo fascinante:
+  - Para ESA función en concreto, el tiempo se congela: la línea siguiente NO se
+    ejecutará hasta que MySQL termine de leer el disco duro y nos devuelva los datos.
+  - ¡PERO PARA EL RESTO DEL MUNDO, NODE NO SE CONGELA!
+  Node no se queda "mirando al techo" con los brazos cruzados esperando a MySQL.
+  Al ver el 'await', Node dice:
+  "Dejo esta función 'pausada en una percha'. Mientras el cable de red y el motor de
+  MySQL hacen su trabajo, libero el hilo principal para seguir haciendo otras cosas".
+
+  ------------------------------------------------------------------------------
+  3. LA METÁFORA DIDÁCTICA: EL BOTÓN DE CAMBIAR EL COLOR DE FONDO 🎨
+  ------------------------------------------------------------------------------
+  Imagina que nuestra aplicación tuviera un botón en pantalla que permitiera
+  "Cambiar el color de fondo a morado, verde o azul".
+
+  - MODELO TRADICIONAL ANTIGUO (Bloqueante / Síncrono):
+    Si una consulta a la base de datos tardara 3 segundos en responder, la pantalla
+    se quedaría completamente congelada. El cursor no respondería, el botón del
+    color de fondo no haría clic y ningún otro usuario en el mundo podría entrar a la web.
+    El camarero está en la cocina esperando a que hierva el agua sin atender a nadie más.
+
+  - MODELO NODE.JS (Asíncrono con Event Loop):
+    En cuanto llega al 'await pool.query(...)', el camarero deja el pedido en la
+    cocina (MySQL) y regresa inmediatamente a la sala.
+    ¿Quieres pulsar el botón de cambiar el color de fondo 50 veces mientras esperamos
+    la respuesta de MySQL? ¡Puedes hacerlo! El servidor cambiará el color cuantas
+    veces quieras por entretenerte, responderá a otros 200 usuarios que pidan la
+    página /about, y procesará cualquier otro evento.
+
+    En el momento exacto en que MySQL termina, la tarjeta de red avisa al sistema
+    operativo y se deposita una notificación en la cola de tareas del Event Loop:
+    "¡Los datos de la lista de tareas ya han llegado!".
+
+    El Event Loop, que no para de dar vueltas comprobando tareas pendientes, recoge
+    el aviso, desengancha la función que estaba congelada en el 'await', le entrega
+    los datos en la variable [items], y la función continúa felizmente hacia adelante
+    hasta hacer el res.render().
+
+  ------------------------------------------------------------------------------
+  4. ESQUEMA MENTAL DEL EVENT LOOP EN ACCIÓN
+  ------------------------------------------------------------------------------
+
+    Hilo Principal (Single Thread)                   En segundo plano (MySQL / Red)
+   ================================                 ================================
+   1. Entra petición GET /
+   2. Ejecuta código hasta:
+      await pool.query("SELECT...")  --------->    Envía consulta por socket TCP a MySQL.
+   3. ⏸️ Pausa temporal de la ruta GET /            MySQL busca en las tablas de su disco...
+      y LIBERA el Hilo Principal.                   (Tarda, por ejemplo, 40 ms)
+   4. ¿Llegan clics del botón de color?
+      🎨 Cambia color de fondo (10 veces).
+   5. ¿Llega otro usuario a /about?
+      📄 Le entrega la vista /about.
+                                                   MySQL responde: "¡Aquí están las filas!"
+   6. 🔔 El Event Loop recibe el aviso  <---------
+   7. ▶️ Reanuda la función del GET /
+      donde se quedó:
+      const [items] = filasRecibidas;
+   8. Ejecuta res.render("list", ...);
+   9. Envía el HTML final al usuario.
+
+  ------------------------------------------------------------------------------
+  5. CONCLUSIÓN PARA EL ALUMNO
+  ------------------------------------------------------------------------------
+  - 'async' significa: "Esta función tiene permiso para pausarse en puntos intermedios".
+  - 'await' significa: "Pausa SOLO esta función hasta que se resuelva la Promesa,
+                        pero deja libre el procesador para todo lo demás".
+  - El 'Event Loop' es el mayordomo hiperactivo que nunca duerme: mientras las bases
+    de datos o los discos trabajan en segundo plano, él sigue atendiendo a todos los
+    demás clientes a la velocidad del rayo.
+*/
+
+

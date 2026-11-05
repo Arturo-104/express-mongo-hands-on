@@ -1,0 +1,282 @@
+<!-- ============================================================================== -->
+<!-- PLANTILLA PARA CANVAS LMS: CÓPIALA DIRECTAMENTE EN EL EDITOR HTML (</>)       -->
+<!-- ============================================================================== -->
+<!-- NOTA: Diseñada con CSS 100% inline para que Canvas no elimine ningún estilo.  -->
+<!-- ============================================================================== -->
+
+<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.7; color: #1e293b; background-color: #f8fafc; padding: 25px 15px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05); max-width: 960px; margin: 0 auto;">
+
+  <!-- CABECERA PRINCIPAL -->
+  <div style="background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%); color: #ffffff; padding: 35px 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(67, 56, 202, 0.25);">
+    <h1 style="margin: 0 0 12px 0; font-size: 26px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">🚀 Práctica de Laboratorio: Despliegue Local con Node.js, Express y MySQL</h1>
+    <p style="margin: 0 0 18px 0; font-size: 15.5px; color: #e0e7ff; max-width: 800px; line-height: 1.6;">
+      Fork en GitHub, persistencia relacional en disco, dominio de <strong>INNER JOIN vs LEFT JOIN</strong>, <code>ON DELETE CASCADE</code>, arquitectura <strong>Stateless vs Stateful</strong> y mejora con <strong>desplegable de navegación dinámica</strong>.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">⏱️ Duración estimada: 2 horas</span>
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">🍴 Requisito: Fork obligatorio</span>
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">🛠️ Tecnologías: Node.js, Express, MySQL 8+, EJS</span>
+      <span style="display: inline-block; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; font-weight: 600; background: rgba(255, 255, 255, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3);">📦 Entregables: Capturas + Código + Vídeo 1 min</span>
+    </div>
+  </div>
+
+  <!-- INTRODUCCIÓN Y OBJETIVOS -->
+  <div style="background-color: #eef2ff; border-left: 5px solid #4338ca; padding: 18px 22px; border-radius: 8px; margin-bottom: 30px; color: #312e81;">
+    <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">🎯 Contexto y Objetivos Pedagógicos</div>
+    <p style="margin: 0; font-size: 14.5px; line-height: 1.6;">
+      La semana anterior experimentamos el despliegue remoto en un servidor de GitHub. En esta práctica bajamos al "terreno de juego" de tu propia máquina: tomarás el control absoluto en local, administrando puertos, resolviendo bloqueos de procesos y conectando Node.js a un motor de base de datos relacional <strong>MySQL</strong>. Además, implementarás una <strong>mejora personalizada en la interfaz (desplegable de listas con tu nombre)</strong>, analizarás por qué un servidor web moderno debe ser <strong>Stateless</strong> (sin estado) y cómo combinar <code>INNER JOIN</code> y <code>LEFT JOIN</code> en una misma consulta.
+    </p>
+  </div>
+
+  <!-- FASE 0: FORK OBLIGATORIO Y DESCARGA -->
+  <div style="background: #ffffff; border: 2px solid #4338ca; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(67, 56, 202, 0.08);">
+    <div style="display: inline-block; background: #4338ca; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 0 (Obligatorio)</div>
+    <h2 style="color: #1e1b4b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Hacer Fork del Repositorio y Clonar en Local</h2>
+
+    <div style="background-color: #fffbeb; border-left: 4px solid #d97706; padding: 14px 18px; border-radius: 6px; margin-bottom: 15px; color: #78350f; font-size: 14px;">
+      <strong>⚠️ REQUISITO OBLIGATORIO:</strong> Debes realizar esta práctica sobre <strong>tu propio Fork</strong> del repositorio del profesor. No clones directamente el repo original, ya que no tendrás permisos para subir tus mejoras de código.
+    </div>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 8px 0;">Instrucciones para hacer el Fork:</h3>
+    <ol style="font-size: 14px; padding-left: 20px; margin: 0 0 15px 0;">
+      <li>Entra con tu cuenta de GitHub en el repositorio original: <a href="https://github.com/fjbanezares/express-mongo-hands-on" target="_blank" rel="noopener" style="color: #4338ca; font-weight: 600; text-decoration: underline;">github.com/fjbanezares/express-mongo-hands-on</a>.</li>
+      <li>En la esquina superior derecha, haz clic en el botón <strong>Fork</strong>.</li>
+      <li>Mantén el nombre del repositorio y pulsa en <strong>Create fork</strong>. Ahora tendrás una copia idéntica en tu propia cuenta (<code>https://github.com/TU_USUARIO/express-mongo-hands-on</code>).</li>
+      <li>Clona <strong>tu propio fork</strong> en tu ordenador desde la terminal:</li>
+    </ol>
+
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 0 0;"><code># Clona TU PROPIO FORK (reemplaza TU_USUARIO por tu usuario real de GitHub)
+git clone https://github.com/TU_USUARIO/express-mongo-hands-on.git
+
+# Entra en la carpeta del proyecto
+cd express-mongo-hands-on</code></pre>
+  </div>
+
+  <!-- FASE 1: INSTALACIÓN Y PREPARACIÓN -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <div style="display: inline-block; background: #4338ca; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 1</div>
+    <h2 style="color: #1e1b4b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Preparación del Entorno (Node.js y MySQL)</h2>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">1. Verificar Node.js y npm</h3>
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 12px 0;"><code>node -v   # Recomendado v18 o superior
+npm -v</code></pre>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">2. Arrancar el servicio local de MySQL (Puerto 3306)</h3>
+    <ul style="font-size: 14px; padding-left: 20px; margin: 0 0 15px 0;">
+      <li><strong>En macOS:</strong> <code>sudo /usr/local/mysql/support-files/mysql.server start</code> (o desde <em>Ajustes del Sistema &gt; MySQL</em>).</li>
+      <li><strong>En Windows:</strong> Verifica en <em>Servicios</em> (<code>services.msc</code>) que <strong>MySQL80</strong> esté iniciado.</li>
+      <li><strong>En Linux:</strong> <code>sudo systemctl start mysql</code></li>
+    </ul>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">3. Instalar las dependencias</h3>
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 0 0;"><code>npm install</code></pre>
+  </div>
+
+  <!-- FASE 2: DESPLIEGUE PRÁCTICA BASE -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <div style="display: inline-block; background: #4338ca; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 2</div>
+    <h2 style="color: #1e1b4b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Despliegue de la Práctica Base (awcodeMySQL.js)</h2>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">1. Arrancar el servidor conectado a MySQL</h3>
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 12px 0;"><code>npm run start:mysql</code></pre>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">2. Interactuar desde el navegador y comprobar MySQL</h3>
+    <ol style="font-size: 14px; padding-left: 20px; margin: 0 0 15px 0;">
+      <li>Entra en <strong><a href="http://localhost:3000" target="_blank" rel="noopener" style="color: #4338ca;">http://localhost:3000</a></strong> y añade 2 tareas a la lista principal.</li>
+      <li>Crea una lista personalizada entrando a <strong><code>http://localhost:3000/universidad</code></strong> y añade una tarea.</li>
+    </ol>
+
+    <!-- ENTREGABLE 1 CALLOUT -->
+    <div style="background-color: #fffbeb; border-left: 5px solid #d97706; padding: 18px 20px; border-radius: 8px; color: #78350f;">
+      <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">📸 ENTREGABLE OBLIGATORIO 1 (Captura de Pantalla de la Base de Datos)</div>
+      <p style="font-size: 14px; margin: 0 0 8px 0;">Abre el cliente CLI de MySQL en otra terminal (o Workbench / DBeaver) y ejecuta:</p>
+      <pre style="background-color: #0f172a; color: #f8fafc; padding: 12px 16px; border-radius: 6px; font-family: Consolas, Monaco, monospace; font-size: 13px; margin: 0 0 10px 0;"><code>USE todolistDB;
+SELECT * FROM lists;
+SELECT * FROM items;</code></pre>
+      <p style="font-size: 14px; margin: 0;"><strong>Toma una captura de pantalla clara</strong> donde se aprecie la salida de estas consultas con las tareas y listas que acabas de introducir desde la web.</p>
+    </div>
+  </div>
+
+  <!-- FASE 3: PUERTOS Y VERSIÓN AVANZADA CON JOINS -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <div style="display: inline-block; background: #4338ca; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 3</div>
+    <h2 style="color: #1e1b4b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Detención, Protocolo de Puertos y Versión Avanzada (awcodeMySQLJoin.js)</h2>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">1. Detener el servidor con Ctrl + C</h3>
+    <p style="font-size: 14px; margin: 0 0 15px 0;">En la terminal donde corre el servidor, pulsa <strong><code>Ctrl + C</code></strong>.</p>
+
+    <!-- ALERTA DE PUERTOS -->
+    <div style="background-color: #fef2f2; border-left: 5px solid #dc2626; padding: 18px 20px; border-radius: 8px; color: #7f1d1d; margin-bottom: 20px;">
+      <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px;">⚠️ ¡Atención al Error EADDRINUSE :::3000! (Protocolo de rescate)</div>
+      <p style="font-size: 14px; margin: 0 0 8px 0;">
+        Si al intentar arrancar el nuevo script te sale <code>Error: listen EADDRINUSE: address already in use :::3000</code>, el proceso anterior sigue vivo en segundo plano bloqueando el puerto.
+      </p>
+      <p style="font-size: 14px; margin: 0 0 4px 0;"><strong>Comando para liberar el puerto 3000 de inmediato:</strong></p>
+      <ul style="font-size: 14px; padding-left: 20px; margin: 0;">
+        <li><strong>En macOS / Linux:</strong> <code style="background: #0f172a; color: #fff; padding: 3px 8px; border-radius: 4px;">kill -9 $(lsof -t -i:3000)</code></li>
+        <li><strong>En Windows (PowerShell):</strong> <code style="background: #0f172a; color: #fff; padding: 3px 8px; border-radius: 4px;">npx kill-port 3000</code></li>
+      </ul>
+    </div>
+
+    <!-- CAJA EXPLICATIVA DE LOS JOINS -->
+    <div style="background-color: #eef2ff; border-left: 5px solid #4338ca; padding: 20px 22px; border-radius: 8px; color: #1e1b4b; margin-bottom: 20px;">
+      <div style="font-weight: 700; font-size: 16px; margin-bottom: 8px; color: #312e81;">🧠 Concepto Clave: ¿Por qué un INNER JOIN y el otro es LEFT JOIN?</div>
+      <p style="font-size: 14px; margin: 0 0 8px 0;">En <code>awcodeMySQLJoin.js</code> combinamos 3 tablas en una sola consulta maestra:</p>
+      <pre style="background-color: #0f172a; color: #f8fafc; padding: 12px 16px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13px; margin: 0 0 12px 0;"><code>SELECT 
+    items_join.id AS _id,
+    items_join.name AS name,
+    lists_join.name AS list_name,
+    priorities_join.name AS priority_name,
+    priorities_join.badge_color AS priority_color
+FROM items_join
+INNER JOIN lists_join ON items_join.list_id = lists_join.id
+LEFT JOIN priorities_join ON items_join.priority_id = priorities_join.id
+WHERE lists_join.name = ?
+ORDER BY items_join.id ASC;</code></pre>
+
+      <p style="font-size: 14px; margin: 0 0 8px 0;"><strong>1. ¿Por qué <code>INNER JOIN lists_join</code> (Join Normal)?</strong><br>
+      Porque la relación es <strong>estricta y obligatoria</strong>. Una tarea no puede existir "en el aire", debe pertenecer por fuerza a una lista válida (<code>list_id NOT NULL</code>). El <code>INNER JOIN</code> exige coincidencia en ambos lados: si la lista no existe, la fila se descarta.</p>
+
+      <p style="font-size: 14px; margin: 0 0 8px 0;"><strong>2. ¿Por qué <code>LEFT JOIN priorities_join</code>?</strong><br>
+      Porque asignar una urgencia es <strong>voluntario y opcional</strong> (<code>priority_id NULLable</code>). El usuario puede crear una tarea <em>"Sin urgencia"</em>.</p>
+
+      <p style="font-size: 14px; margin: 0;"><strong>3. ¿Qué conseguimos con esto?</strong><br>
+      Con el <code>LEFT JOIN</code> garantizamos que se conserven <strong>TODAS las tareas</strong> de la tabla izquierda (<code>items_join</code>). Si una tarea no tiene urgencia, sus campos de prioridad valen <code>NULL</code>, pero la tarea <strong>se sigue mostrando en pantalla</strong>.<br>
+      <span style="color: #b91c1c; font-weight: 600;">¡Peligro si usáramos INNER JOIN para las prioridades!</span> Si pusiéramos <code>INNER JOIN priorities_join</code>, <strong>todas las tareas sin urgencia desaparecerían de la vista</strong> porque no tendrían correspondencia en la tabla de prioridades.</p>
+    </div>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">2. Desplegar la versión avanzada</h3>
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 12px 0;"><code>npm run start:mysql:join</code></pre>
+    <p style="font-size: 14px; margin: 0;">Entra a <strong><a href="http://localhost:3000" target="_blank" rel="noopener" style="color: #4338ca;">http://localhost:3000</a></strong>, crea una tarea con urgencia y otra sin urgencia, y luego visita el laboratorio didáctico en <strong><a href="http://localhost:3000/comparativa-joins" target="_blank" rel="noopener" style="color: #4338ca; font-weight: 600;">http://localhost:3000/comparativa-joins</a></strong> para ver la comparativa de datos devueltos.</p>
+  </div>
+
+  <!-- FASE 4: MEJORA DE CÓDIGO OBLIGATORIA (DESPLEGABLE PERSONALIZADO) -->
+  <div style="background: #ffffff; border: 2px solid #8b5cf6; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 6px 15px -2px rgba(139, 92, 246, 0.1);">
+    <div style="display: inline-block; background: #8b5cf6; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Reto de Código Obligatorio</div>
+    <h2 style="color: #5b21b6; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">🌟 Mejora de Código: Desplegable de Navegación («Listas tareas de XXX»)</h2>
+    
+    <p style="font-size: 14.5px; margin: 0 0 15px 0;">
+      Hasta ahora, para movernos a una lista personalizada teníamos que escribir su URL a mano en la barra del navegador (ej: <code>/trabajo</code>). Como mejora técnica diferencial, debes añadir un <strong>menú desplegable en la cabecera</strong> que liste todas las listas existentes en la base de datos y que al hacer clic en una, te lleve automáticamente a ella.
+    </p>
+
+    <div style="background-color: #faf5ff; border-left: 4px solid #8b5cf6; padding: 12px 16px; border-radius: 6px; margin-bottom: 18px; font-size: 14px; color: #4c1d95;">
+      <strong>🏷️ FACTOR DIFERENCIAL PERSONALIZADO:</strong> El desplegable debe titularse obligatoriamente <strong><code>Listas tareas de XXX</code></strong>, donde <strong><code>XXX</code></strong> es tu <strong>nombre y apellido real</strong> (ejemplo: <em>"Listas tareas de Carlos Gómez"</em>).
+    </div>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">Paso A: Modificar el Backend (awcodeMySQL.js o awcodeMySQLJoin.js)</h3>
+    <p style="font-size: 14px; margin: 0 0 6px 0;">En las rutas <code>GET /</code> y <code>GET /:customListName</code>, consulta todas las listas existentes en la base de datos y pásalas a la vista dentro de <code>res.render()</code>:</p>
+
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13.5px; overflow-x: auto; line-height: 1.5; margin: 8px 0 15px 0;"><code>// 1. Obtener todas las listas creadas para el selector
+const [allLists] = await pool.query("SELECT name FROM lists ORDER BY name ASC");
+// (o 'FROM lists_join' si estás en la versión Join)
+
+// 2. Pasarlas a la vista en res.render:
+res.render("list", { 
+    listTitle: "Today", 
+    newListItems: items,
+    allLists: allLists   // 👈 Añadir esta variable
+});</code></pre>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 15px 0 6px 0;">Paso B: Modificar la Vista EJS (views/list.ejs)</h3>
+    <p style="font-size: 14px; margin: 0 0 6px 0;">Abre <code>views/list.ejs</code> y añade el siguiente bloque justo dentro de la caja de cabecera <code>&lt;div class="box" id="heading"&gt;</code>, debajo de <code>&lt;h1&gt;&lt;%= listTitle %&gt;&lt;/h1&gt;</code>:</p>
+
+    <pre style="background-color: #0f172a; color: #f8fafc; padding: 14px 18px; border-radius: 8px; font-family: Consolas, Monaco, monospace; font-size: 13px; overflow-x: auto; line-height: 1.5; margin: 8px 0 15px 0;"><code>&lt;!-- DESPLEGABLE DINÁMICO DE LISTAS (Personalizado por el alumno) --&gt;
+&lt;% if (typeof allLists !== 'undefined' &amp;&amp; allLists.length &gt; 0) { %&gt;
+  &lt;div style="padding-bottom: 18px; text-align: center;"&gt;
+    &lt;label for="listNav" style="color: #ffffff; font-size: 13.5px; display: block; margin-bottom: 6px; font-weight: 500;"&gt;
+      📋 Listas tareas de XXX:  &lt;!-- 👈 REEMPLAZA XXX POR TU NOMBRE --&gt;
+    &lt;/label&gt;
+    &lt;select id="listNav" 
+            onchange="if(this.value) window.location.href = (this.value === 'Today' ? '/' : '/' + encodeURIComponent(this.value));"
+            style="padding: 7px 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 14px; background: #ffffff; color: #333; cursor: pointer; outline: none;"&gt;
+      &lt;option value=""&gt;-- Selecciona o cambia de lista --&lt;/option&gt;
+      &lt;option value="Today" &lt;%= listTitle === 'Today' ? 'selected' : '' %&gt;&gt;📅 Today&lt;/option&gt;
+      &lt;% allLists.forEach(function(l) { %&gt;
+        &lt;% if (l.name !== 'Today') { %&gt;
+          &lt;option value="&lt;%= l.name %&gt;" &lt;%= listTitle === l.name ? 'selected' : '' %&gt;&gt;
+            📌 &lt;%= l.name %&gt;
+          &lt;/option&gt;
+        &lt;% } %&gt;
+      &lt;% }); %&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;% } %&gt;</code></pre>
+  </div>
+
+  <!-- FASE 5: VÍDEO DE REFLEXIÓN -->
+  <div style="background: #ffffff; border: 2px solid #6366f1; border-radius: 12px; padding: 25px; margin-bottom: 30px; box-shadow: 0 6px 12px -2px rgba(99, 102, 241, 0.1);">
+    <div style="display: inline-block; background: #6366f1; color: #ffffff; font-weight: 800; padding: 3px 14px; border-radius: 14px; font-size: 12px; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">Paso 5</div>
+    <h2 style="color: #1e1b4b; font-size: 20px; margin: 0 0 10px 0; font-weight: 700;">Reflexión en Vídeo (Máximo 1 Minuto) 🎥</h2>
+    <p style="font-size: 14.5px; margin: 0 0 15px 0;">
+      Grábate en vídeo (webcam o captura de pantalla con tu voz clara, <strong>duración máxima: 60 segundos</strong>) respondiendo a los siguientes tres puntos fundamentales:
+    </p>
+
+    <div style="background-color: #ecfdf5; border-left: 5px solid #059669; padding: 18px 20px; border-radius: 8px; color: #064e3b;">
+      <div style="font-weight: 700; font-size: 15px; margin-bottom: 10px;">🎙️ Los 3 Puntos Obligatorios del Vídeo:</div>
+      <ol style="font-size: 14px; padding-left: 20px; margin: 0;">
+        <li style="margin-bottom: 10px;">
+          <strong>1. Despliegue en Local vs Despliegue Remoto en Servidor de GitHub:</strong><br>
+          Expresa cómo te has sentido teniendo el control absoluto "en tus propias manos" en tu ordenador (gestionando puertos locales, matando procesos y conectando directamente a tu motor MySQL) habiendo realizado la semana anterior un despliegue remoto en un servidor de GitHub.
+        </li>
+        <li style="margin-bottom: 10px;">
+          <strong>2. El porqué de los JOINs y demostración del Desplegable:</strong><br>
+          Explica brevemente por qué la lista usa un <code>INNER JOIN</code> (obligatorio) y la urgencia usa un <code>LEFT JOIN</code> (opcional para no perder tareas), y muestra tu desplegable <em>"Listas tareas de XXX"</em> funcionando.
+        </li>
+        <li>
+          <strong>3. Arquitectura Stateless vs Stateful:</strong><br>
+          Explica la importancia de que la aplicación web sea <em>Stateless</em> (el servidor Node.js no guarda tareas en su memoria RAM) delegando toda la persistencia a MySQL, permitiendo reiniciar el servidor o escalarlo sin que los usuarios pierdan sus datos.
+        </li>
+      </ol>
+    </div>
+    <p style="font-size: 13.5px; color: #64748b; margin: 12px 0 0 0;"><em>Puedes subir el vídeo a Canvas Studio, Loom, Google Drive, YouTube (enlace oculto/unlisted) o adjuntar el archivo (.mp4/.webm) directamente en la entrega.</em></p>
+  </div>
+
+  <!-- FASE 6: ENTREGABLES Y RÚBRICA -->
+  <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);">
+    <h2 style="color: #1e1b4b; font-size: 20px; margin: 0 0 15px 0; font-weight: 700;">6. Entregables y Criterios de Evaluación</h2>
+    
+    <h3 style="color: #334155; font-size: 16px; margin: 0 0 10px 0;">Resumen del contenido a adjuntar en Canvas:</h3>
+    <ul style="list-style: none; padding-left: 0; font-size: 14px; margin: 0 0 25px 0;">
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">🍴 <strong>Enlace a TU FORK en GitHub:</strong> Con los commits de tus cambios en el código.</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">📸 <strong>Captura de pantalla de la Base de Datos:</strong> Salida del terminal de MySQL con <code>SELECT * FROM lists;</code> y <code>SELECT * FROM items;</code>.</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">📸 <strong>Captura de la Web:</strong> Mostrando el selector desplegable <em>"Listas tareas de XXX"</em> con tu nombre real.</li>
+      <li style="padding-left: 28px; margin-bottom: 10px; position: relative;">🎥 <strong>Enlace al vídeo (máximo 60 segundos):</strong> Con tus respuestas a los 3 puntos (Local vs Remoto GitHub, INNER vs LEFT JOIN, y Stateless vs Stateful).</li>
+    </ul>
+
+    <h3 style="color: #334155; font-size: 16px; margin: 0 0 12px 0;">Rúbrica de Calificación (Total: 10 Puntos)</h3>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 14px; border: 1px solid #e2e8f0;">
+        <thead>
+          <tr style="background-color: #f8fafc;">
+            <th style="border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; color: #334155;">Criterio</th>
+            <th style="border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; color: #334155; width: 90px;">Puntos</th>
+            <th style="border: 1px solid #e2e8f0; padding: 12px 14px; text-align: left; color: #334155;">Descripción del nivel excelente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Fork en GitHub y Despliegue Local</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #4338ca; font-weight: 700;">2.0 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Práctica realizada sobre su propio Fork en GitHub y persistencia comprobada con capturas de MySQL.</td>
+          </tr>
+          <tr style="background-color: #fbfcfe;">
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Mejora de Código: Desplegable Personalizado</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #4338ca; font-weight: 700;">2.5 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Implementación exitosa del selector con `allLists`, navegación fluida y titulación obligatoria con el nombre del alumno.</td>
+          </tr>
+          <tr>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Dominio de JOINs y Puertos</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #4338ca; font-weight: 700;">2.5 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Explica con precisión por qué la lista exige <code>INNER JOIN</code> y la urgencia <code>LEFT JOIN</code>, y gestiona adecuadamente los puertos.</td>
+          </tr>
+          <tr style="background-color: #fbfcfe;">
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; font-weight: 600;">Vídeo Reflexivo (Local vs GitHub + Stateless/Stateful)</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px; color: #4338ca; font-weight: 700;">3.0 pts</td>
+            <td style="border: 1px solid #e2e8f0; padding: 12px 14px;">Vídeo conciso (≤ 60 seg) donde expresa con madurez técnica la diferencia entre el despliegue local y el remoto en GitHub, y el valor arquitectónico del modelo Stateless.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
