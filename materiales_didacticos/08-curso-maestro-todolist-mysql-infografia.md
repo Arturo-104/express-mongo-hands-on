@@ -1,6 +1,10 @@
-# 🗺️ Guía Maestra: «La Vida de una Tarea» — Node.js, Express y MySQL
+# Módulo 8: «La Vida de una Tarea» — Node.js, Express y MySQL
 > **Deconstrucción Pedagógica Profunda de las 12 Láminas Infográficas del Proyecto.**  
 > *Una travesía completa desde el motor V8 y el protocolo HTTP hasta las transacciones relacionales en MySQL y el renderizado con EJS.*
+
+---
+
+📍 **Navegación:** [⬅️ Anterior: Módulo 7](./07-postgresql-arquitectura-esquemas-passwords.md) | [🏠 Volver al README Principal](../README.md)
 
 ---
 

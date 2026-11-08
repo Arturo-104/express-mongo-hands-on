@@ -1,5 +1,5 @@
-# 🚀 Masterclass Express + MongoDB: De la Memoria a la Nube, DevOps y Seguridad
-> **Curso integral y práctico sobre persistencia de datos, desarrollo backend con Node.js/Express, MongoDB Atlas vs PostgreSQL, despliegues profesionales (Docker, Kubernetes, Render), redes avanzadas (Balanceadores L4/L7, DNS) y ciberseguridad práctica (DevSecOps, Hardening con Helmet, TLS con Wireshark y OWASP).**
+# 🚀 Masterclass Express + Bases de Datos: De la Memoria a la Nube, DevOps y Seguridad
+> **Curso integral y práctico sobre persistencia de datos, desarrollo backend con Node.js/Express, MongoDB Atlas vs PostgreSQL vs MySQL, despliegues profesionales (Render, Docker, Kubernetes, GCP Cloud Run, AWS), redes avanzadas (Balanceadores L4/L7, DNS) y ciberseguridad práctica (DevSecOps, Hardening con Helmet, TLS y OWASP).**
 
 ---
 
@@ -7,21 +7,25 @@
 
 Muchas formaciones web comienzan enseñando listas de tareas (*To-Do Lists*) que guardan datos en variables volátiles en la memoria RAM del servidor (`let items = [...]`). Aunque esto permite entender rutas y peticiones básicas, genera una falsa ilusión de software: **en cuanto el servidor se reinicia o se despliega en la nube, todos los datos desaparecen**.
 
-El objetivo de este repositorio es transformar esa práctica académica básica en una **solución de ingeniería de software real, resiliente y segura**. Centramos todo el aprendizaje en nuestro código estrella: [**`awcodeAtlas.js`**](./awcodeAtlas.js) (MongoDB Atlas) y su contraparte relacional [**`awcodePostgres.js`**](./awcodePostgres.js) (PostgreSQL), donde conectamos una aplicación completa de Express y EJS con bases de datos en la nube.
+El objetivo de este repositorio es transformar esa práctica académica básica en una **solución de ingeniería de software real, resiliente y segura**. Centramos todo el aprendizaje en nuestro código estrella:
+- [**`awcodeAtlas.js`**](./awcodeAtlas.js) ➔ MongoDB Atlas en la nube (NoSQL).
+- [**`awcodePostgres.js`**](./awcodePostgres.js) ➔ PostgreSQL relacional con pools e integridad referencial (SQL).
+- [**`awcodeMySQL.js`**](./awcodeMySQL.js) ➔ MySQL en local con auto-creación DDL y compatibilidad de vistas EJS (SQL).
+- [**`awcodeMySQLJoin.js`**](./awcodeMySQLJoin.js) ➔ MySQL avanzado con 3 tablas relacionadas, catálogo de urgencias y demostración didáctica de `INNER JOIN` vs `LEFT JOIN`.
 
-Para que el aprendizaje sea visual, intuitivo y riguroso, el curso se apoya en una **colección de 36 infografías de alta resolución** repartidas en la carpeta [`materiales_didacticos/`](./materiales_didacticos/), expandiéndose en **siete módulos formativos exhaustivos**:
+Para que el aprendizaje sea visual, intuitivo y riguroso, el curso se apoya en una **colección de 48 infografías de alta resolución** organizadas en [`materiales_didacticos/`](./materiales_didacticos/), articuladas en **ocho módulos formativos exhaustivos**:
 
 ```
                                                               MAPA DE LA FORMACIÓN
                                                                         │
-   ┌───────────────────┬───────────────────┬───────────────────┬────────┼──────────┬───────────────────┬───────────────────┬───────────────────┐
-   ▼                   ▼                   ▼                   ▼                   ▼                   ▼                   ▼                   ▼
-[ MÓDULO 1 ]        [ MÓDULO 2 ]        [ MÓDULO 3 ]        [ MÓDULO 4 ]        [ MÓDULO 5 ]        [ MÓDULO 6 ]        [ MÓDULO 7 ]
-Persistencia vs RAM awcodeAtlas.js      Despliegues Cloud   Balanceadores, DNS  Postgres vs Mongo   Despliegue Seguro   PostgreSQL Arquitectura
-MongoDB vs SQL      CRUD y Mongoose     Docker, K8s, CI/CD  Namespaces & Redes  awcodePostgres.js   DevSecOps & OWASP   Esquemas, Pass & Python
+   ┌───────────────────┬───────────────────┬───────────────────┬────────┼──────────┬───────────────────┬───────────────────┬───────────────────┬───────────────────┐
+   ▼                   ▼                   ▼                   ▼                   ▼                   ▼                   ▼                   ▼                   ▼
+[ MÓDULO 1 ]        [ MÓDULO 2 ]        [ MÓDULO 3 ]        [ MÓDULO 4 ]        [ MÓDULO 5 ]        [ MÓDULO 6 ]        [ MÓDULO 7 ]        [ MÓDULO 8 ]
+Persistencia vs RAM awcodeAtlas.js      Despliegues Cloud   Balanceadores, DNS  Postgres vs Mongo   Despliegue Seguro   PostgreSQL Arq.     MySQL & Vida Tarea
+MongoDB vs SQL      CRUD y Mongoose     Docker, K8s, CI/CD  Namespaces & Redes  awcodePostgres.js   DevSecOps & OWASP   Esquemas, Pass      12 Infografías
 ```
 
-### 🧭 Enlaces Directos a los Módulos:
+### 🧭 Enlaces Directos a los Módulos Formativos:
 * 📘 **[Módulo 1: Fundamentos de Persistencia y Comparativa NoSQL vs SQL](./materiales_didacticos/01-fundamentos-persistencia-mongo-vs-sql.md)**
 * 📗 **[Módulo 2: Curso Práctico - Código awcodeAtlas.js y CRUD Completo](./materiales_didacticos/02-curso-practica-awcodeAtlas-crud-completo.md)**
 * 📙 **[Módulo 3: Curso Maestro de Despliegues Cloud, Contenedores y DevOps](./materiales_didacticos/03-curso-maestro-despliegues-cloud-devops.md)**
@@ -29,181 +33,195 @@ MongoDB vs SQL      CRUD y Mongoose     Docker, K8s, CI/CD  Namespaces & Redes  
 * 📓 **[Módulo 5: Despliegue con PostgreSQL vs MongoDB Atlas (awcodePostgres.js)](./materiales_didacticos/05-despliegue-postgresql-vs-mongodb.md)**
 * 🛡️ **[Módulo 6: Despliegue Seguro, DevSecOps y Hardening Web](./materiales_didacticos/06-despliegue-seguro-devsecops-owasp.md)**
 * 🐘 **[Módulo 7: PostgreSQL: Arquitectura, Esquemas, Passwords e Inicialización](./materiales_didacticos/07-postgresql-arquitectura-esquemas-passwords.md)**
+* 🐬 **[Módulo 8: «La Vida de una Tarea» — Node.js, Express y MySQL (12 Infografías)](./materiales_didacticos/08-curso-maestro-todolist-mysql-infografia.md)**
 
 ---
 
-## 📚 Estructura Detallada de los Módulos
+## 🎯 Guías de Prácticas para Canvas LMS (Evaluables)
+
+El repositorio incluye las plantillas HTML listas para importar en **Canvas LMS** (diseñadas con CSS inline para que Canvas no elimine ningún estilo):
+
+| Práctica | Documento HTML | Enfoque Técnico | Estado |
+| :--- | :--- | :--- | :--- |
+| **Práctica 1 (Semana Actual)** | [**`practica_despliegue_local.html`**](./practica_despliegue_local.html) | Despliegue Local con MySQL, resolución de puertos (`kill -9`), demostración de `INNER JOIN` vs `LEFT JOIN`, `ON DELETE CASCADE`, mejora con menú desplegable personalizado y arquitectura *Stateless*. | 📌 **Activa** |
+| **Práctica 2 (Próxima Semana)** | [**`practica_despliegue_remoto.html`**](./practica_despliegue_remoto.html) | Despliegue en la Nube con **Render** + **MongoDB Atlas**, regla de red `0.0.0.0/0`, variables de entorno (`MONGODB_URI`), prueba multidispositivo 5G y reflexión sobre DBaaS. | 🚀 **Próxima** |
+
+---
+
+## ☁️ Especial Atención: Cómo Preparar el Despliegue en Render (Próxima Práctica)
+
+Aunque la práctica de esta semana se realiza en **local sobre MySQL**, es fundamental que los alumnos comprendan con antelación cómo se desplegará en la nube con **Render** en la siguiente sesión, ya que los conceptos de red e infraestructura se complementan directamente:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Alumno as 👤 Alumno (GitHub Fork)
+    participant Render as ☁️ Render (Web Service PaaS)
+    participant Atlas as 🍃 MongoDB Atlas (Cloud DBaaS)
+
+    Alumno->>Render: 1. Conecta su Fork en GitHub (Rama main)
+    Note over Render: Detecta Node.js ➔ Ejecuta 'npm install' (Build Command)
+    Render->>Render: 2. Asigna puerto dinámico: process.env.PORT
+    Render->>Render: 3. Inyecta MONGODB_URI desde Environment Variables
+    Render->>Render: 4. Ejecuta 'node awcodeAtlas.js' (Start Command)
+    Render->>Atlas: 5. Conexión TCP saliente desde contenedor efímero
+    Note over Atlas: Cortafuegos comprueba Network Access: ¿Está 0.0.0.0/0?<br>✅ SÍ ➔ Acepta y autentica con SCRAM-SHA-256
+    Render-->>Alumno: 6. Emite URL pública con HTTPS (ej: https://app.onrender.com)
+```
+
+### Puntos clave a dominar para Render:
+1. **Fork Obligatorio en GitHub:** Render necesita permisos para acceder a un repositorio que pertenezca a la cuenta del propio alumno.
+2. **Build Command y Start Command:**
+   - *Build Command:* `npm install` (instala dependencias en el contenedor de Render).
+   - *Start Command:* `node awcodeAtlas.js` (lanza la versión cloud de la To-Do List).
+3. **El puerto dinámico (`process.env.PORT`):** En local solemos fijar el puerto `3000`, pero en Render el balanceador interno asigna un puerto aleatorio mediante la variable de entorno `process.env.PORT`. Nuestro código ya está preparado:
+   ```javascript
+   const PORT = process.env.PORT || 3000;
+   app.listen(PORT, () => console.log("Servidor en puerto", PORT));
+   ```
+4. **Variables de Entorno Secretas:** La cadena `MONGODB_URI` jamás debe subirse a Git. En Render se añade en la pestaña *Environment Variables*.
+5. **El porqué de `0.0.0.0/0` en MongoDB Atlas:** Render asigna IPs públicas dinámicas que cambian en cada despliegue. Si en Atlas solo autorizas tu IP local, el servidor de Render no podrá conectar y el despliegue fallará por *Connection Timeout*. Permitir `0.0.0.0/0` es el estándar en entornos PaaS/Serverless, descansando la seguridad en credenciales criptográficas robustas.
+
+---
+
+## 📚 Estructura Detallada de los Módulos Formativos
+
+### 🐬 [Módulo 8: «La Vida de una Tarea» — Node.js, Express y MySQL (12 Infografías)](./materiales_didacticos/08-curso-maestro-todolist-mysql-infografia.md)
+*Deconstrucción profunda de las 12 láminas infográficas de la carpeta [`materiales_didacticos/infografia_app_todolist_mysql/`](./materiales_didacticos/infografia_app_todolist_mysql/).*
+
+* **01. Node.js:** V8 en C++, bindings de sistema operativo y JavaScript fuera del navegador.
+* **02. npm y require:** Diferencia entre tiempo de instalación (`node_modules`) y tiempo de ejecución (caché en RAM).
+* **03. Arquitectura 3 Capas:** Separación entre Cliente (Navegador), Backend (Express) y Base de Datos (MySQL por puerto 3306).
+* **04. Arranque DDL y Pools:** Connection Pool con `mysql2/promise`, creación condicional de BD y tablas, e integridad con `ON DELETE CASCADE`.
+* **05. GET / y Sembrado Perezoso:** Comprobación de la lista "Today" y el alias SQL clave `SELECT id AS _id` para compatibilidad de vistas EJS.
+* **06. Mapeo SQL a JavaScript:** Transformación de tramas binarias de disco a tipos nativos en el Heap de V8 (`INT` ➔ `Number`, `VARCHAR` ➔ `String`).
+* **07. Objetos JS vs JSON:** La diferencia fundamental entre estructuras vivas en memoria RAM y cadenas de texto plano serializadas para la red.
+* **08. EJS y Server-Side Rendering (SSR):** Interpolación segura con `<%= %>` contra ataques XSS y modularización con `<%- include %>`.
+* **09. Formularios POST y Patrón PRG:** Codificación `application/x-www-form-urlencoded`, prevención de SQL Injection con `?` y por qué usar `res.redirect()` tras un POST para evitar duplicados con F5.
+* **10. Borrado Atómico por ID:** El truco del evento `onChange="this.form.submit()"` en checkboxes y borrado por clave primaria indexada.
+* **11. Listas Personalizadas y la Regla del Embudo:** Rutas dinámicas (`/:customListName`) y por qué las rutas fijas (`/`, `/comparativa-joins`) deben declararse siempre antes que los comodines para no quedarse congeladas.
+* **12. Concurrencia y el Event Loop:** La metáfora del botón de cambiar el color de fondo: por qué `await` pausa solo esa función liberando el hilo principal de Node para seguir atendiendo a otros usuarios.
+
+👉 **[Abrir el Módulo 8 (MySQL y las 12 Infografías)](./materiales_didacticos/08-curso-maestro-todolist-mysql-infografia.md)**
+
+---
 
 ### 📘 [Módulo 1: Fundamentos de Persistencia y Criterio de Selección de Bases de Datos](./materiales_didacticos/01-fundamentos-persistencia-mongo-vs-sql.md)
-*Basado en la serie infográfica «Persistir vs No Persistir» (Páginas 1 a 4).*
-
 * **Por qué importa persistir:** De una app efímera en memoria a una base de datos duradera.
 * **El flujo de datos del cliente a la nube:** Cliente ➔ HTML/CSS/JS ➔ Express ➔ EJS ➔ Mongoose ➔ MongoDB ➔ Atlas.
-* **La tríada dorada:** Qué aporta MongoDB (documentos), qué aporta Mongoose (orden y modelos) y qué aporta Atlas (infraestructura cloud).
-* **Comparativa honesta MongoDB vs PostgreSQL:** Tablas vs Documentos, Joins vs Embebidos, Transacciones vs Velocidad de prototipado.
-* **Veredicto tecnológico:** Cuándo usar MongoDB, cuándo PostgreSQL, MySQL, Redis o SQLite. *"Tecnología con criterio > tecnología por moda"*.
+* **La tríada dorada:** Qué aporta MongoDB (documentos), qué aporta Mongoose (orden) y qué aporta Atlas (infraestructura cloud).
+* **Veredicto tecnológico:** Cuándo usar MongoDB, cuándo PostgreSQL, MySQL, Redis o SQLite.
 
-👉 **[Hacer clic aquí para abrir el Módulo 1](./materiales_didacticos/01-fundamentos-persistencia-mongo-vs-sql.md)**
-
----
-
-### 📗 [Módulo 2: Curso Práctico - La Práctica Estrella `awcodeAtlas.js` y el CRUD Completo](./materiales_didacticos/02-curso-practica-awcodeAtlas-crud-completo.md)
-*Basado en la serie infográfica «De este código a una app persistente» y «Radiografía del CRUD» (Páginas 1 a 6).*
-
-* **Deconstrucción del código línea por línea:** Importaciones, middlewares (`body-parser`, `express.static`) y motor EJS.
-* **Modelado de datos en Mongoose:** 
-  * Colección independiente `Item` para la lista por defecto `"Today"`.
-  * Colección `List` con arrays de **subdocumentos embebidos** para listas personalizadas (`/:customListName`).
-* **Radiografía completa de las 4 operaciones CRUD:**
-  * `GET /`: Lectura y auto-siembra (*auto-seed*) de datos iniciales.
-  * `GET /:customListName`: Parámetros de ruta, normalización con `_.capitalize()` y creación perezosa de listas.
-  * `POST /`: Creación de tareas con `item.save()` o `push()` en listas anidadas.
-  * `POST /delete`: Borrado de documentos de primer nivel vs borrado atómico de subdocumentos con el operador `$pull`.
-* **El patrón Post-Redirect-Get (PRG):** Evitando reenvíos accidentales y manteniendo limpio el historial del navegador.
-* **Traducción de Mongoose al Driver nativo de MongoDB.**
-* **Seguridad y buenas prácticas:** Desterrando contraseñas hardcodeadas hacia variables de entorno.
-
-👉 **[Hacer clic aquí para abrir el Módulo 2](./materiales_didacticos/02-curso-practica-awcodeAtlas-crud-completo.md)**
+👉 **[Abrir el Módulo 1](./materiales_didacticos/01-fundamentos-persistencia-mongo-vs-sql.md)**
 
 ---
 
-### 📙 [Módulo 3: Curso Maestro de Despliegues, Cloud y DevOps](./materiales_didacticos/03-curso-maestro-despliegues-cloud-devops.md)
-*Basado en la serie infográfica «Del código al despliegue real» (Páginas 1 a 6).*
+### 📗 [Módulo 2: Código awcodeAtlas.js y CRUD Completo](./materiales_didacticos/02-curso-practica-awcodeAtlas-crud-completo.md)
+* **Modelado en Mongoose:** Colección `Item` independiente y colección `List` con arrays de **subdocumentos embebidos**.
+* **Operaciones CRUD completas:** `GET /`, creación perezosa con `_.capitalize()`, `POST /` con `item.save()` y borrado atómico con `$pull`.
 
-* **¿Qué significa desplegar?** Los tres entornos esenciales: Desarrollo, Preproducción (Staging) y Producción.
-* **Checklist pre-despliegue:** Dependencias, scripts de inicio, puerto dinámico `process.env.PORT` y `.gitignore`.
-* **Despliegue práctico en Render:** Creación de Web Service, inyección de `MONGODB_ATLAS_URI` y dominios con SSL automático.
-* **Empaquetado profesional con Docker:** Creación de un `Dockerfile` optimizado en Alpine Linux con separación de dependencias.
-* **Orquestación con Kubernetes (K8s):**
-  * Desacoplamiento de estado: Cómputo efímero en Pods de K8s y persistencia en MongoDB Atlas.
-  * Conceptos clave: Pod, Deployment, Service, Ingress, Secret y ConfigMap.
-  * Manifiesto YAML completo comentado para la aplicación To-Do.
-* **Rutas en los Hyperscalers (AWS, GCP y Azure):** Comparativa entre Máquinas Virtuales (EC2/Compute Engine), Plataformas Gestionadas Serverless (AWS App Runner, GCP Cloud Run, Azure App Service) y Kubernetes gestionado (EKS, GKE, AKS).
-* **Opciones alternativas:** Oracle Cloud (OCI Free Tier), Alibaba Cloud para Asia, On-Premise y Docker local.
-* **CI/CD y Automatización Profesional:** Pipeline de 9 pasos con **GitHub Actions**, estrategias de despliegue (Rolling Updates, Blue-Green, Canary) y el Mapa de Madurez del Ingeniero Cloud.
-
-👉 **[Hacer clic aquí para abrir el Módulo 3](./materiales_didacticos/03-curso-maestro-despliegues-cloud-devops.md)**
+👉 **[Abrir el Módulo 2](./materiales_didacticos/02-curso-practica-awcodeAtlas-crud-completo.md)**
 
 ---
 
-### 📕 [Módulo 4: Balanceadores de Carga, DNS, Redes y Seguridad en Despliegues](./materiales_didacticos/04-balanceadores-dns-redes-y-seguridad.md)
-*Basado en la serie infográfica «Balanceadores de carga, DNS y despliegues» (Páginas 1 a 5).*
+### 📙 [Módulo 3: Despliegues Cloud, Contenedores y DevOps](./materiales_didacticos/03-curso-maestro-despliegues-cloud-devops.md)
+* **Los tres entornos:** Desarrollo, Staging y Producción.
+* **Despliegue en Render, Dockerfiles optimizados en Alpine y Kubernetes:** Pods, Deployments, Services e Ingress.
+* **CI/CD con GitHub Actions:** Pipeline automatizado de 9 pasos y estrategias Zero-Downtime.
 
-* **El balanceador de carga como pieza invisible:** Alta disponibilidad, escalado horizontal, tolerancia a fallos y por qué MongoDB Atlas no se balancea desde este componente.
-* **Tipos de balanceo:** Capa 4 (L4 / Transporte TCP/UDP) vs Capa 7 (L7 / Aplicación HTTP/HTTPS, rutas, cookies y cabeceras).
-* **Estrategias de release gestionadas por el balanceador:** Rolling Updates paso a paso, Blue/Green (switch instantáneo) y Canary (despliegue progresivo por porcentajes).
-* **Kubernetes y OpenShift en la capa de red:** Ingress Controllers (NGINX), Services (balanceo interno), OpenShift Routes con HAProxy, y aislamiento por **Namespaces** con **RBAC** y **Network Policies**.
-* **El catálogo en la nube:** Comparativa de AWS (ALB/NLB/Route 53), Google Cloud (Cloud Load Balancing/Cloud Armor), Azure (Application Gateway) y cómo plataformas como Render abstraen esta complejidad.
-* **El recorrido End-to-End:** Desde que el usuario escribe la URL, resolución de registros DNS (A, CNAME, TTL), paso por el WAF y llegada a los Pods sanos.
-
-👉 **[Hacer clic aquí para abrir el Módulo 4](./materiales_didacticos/04-balanceadores-dns-redes-y-seguridad.md)**
+👉 **[Abrir el Módulo 3](./materiales_didacticos/03-curso-maestro-despliegues-cloud-devops.md)**
 
 ---
 
-### 📓 [Módulo 5: Despliegue con PostgreSQL vs MongoDB Atlas (awcodePostgres.js)](./materiales_didacticos/05-despliegue-postgresql-vs-mongodb.md)
-*Práctica y análisis comparativo del backend relacional vs NoSQL en entornos de producción.*
+### 📕 [Módulo 4: Balanceadores de Carga, DNS, Redes y Seguridad](./materiales_didacticos/04-balanceadores-dns-redes-y-seguridad.md)
+* **Balanceo L4 vs L7:** TCP/UDP vs HTTP/HTTPS con rutas y cookies de sesión.
+* **Estrategias de release:** Rolling Updates, Blue/Green y Canary releases.
+* **Resolución DNS End-to-End:** Registros A, CNAME, TTL y tránsito seguro hasta los Pods.
 
-* **El código `awcodePostgres.js`:** Misma lógica de negocio, mismas vistas EJS ([`views/list.ejs`](./views/list.ejs)) y cero cambios en HTML/CSS gracias al alias `SELECT id AS _id`.
-* **Inicialización DDL automática:** `CREATE TABLE IF NOT EXISTS` ejecutado al arrancar el servidor antes de `app.listen`, garantizando idempotencia en despliegues cloud (Render, Supabase, Neon).
-* **Pool de conexiones y SSL:** Gestión con `pg.Pool` y configuración segura de certificados TLS para entornos de producción.
-* **Integridad Referencial y Cascade:** Relación 1 a N entre `lists` e `items` con `ON DELETE CASCADE` frente a arrays embebidos de MongoDB.
-* **Matriz Comparativa Exhaustiva:** Ventajas e inconvenientes de desplegar con PostgreSQL vs MongoDB Atlas (límites de conexiones, backups, migraciones de esquema, consistencia ACID y escalabilidad).
+👉 **[Abrir el Módulo 4](./materiales_didacticos/04-balanceadores-dns-redes-y-seguridad.md)**
 
-👉 **[Hacer clic aquí para abrir el Módulo 5](./materiales_didacticos/05-despliegue-postgresql-vs-mongodb.md)**
+---
+
+### 📓 [Módulo 5: PostgreSQL vs MongoDB Atlas (awcodePostgres.js)](./materiales_didacticos/05-despliegue-postgresql-vs-mongodb.md)
+* **Backend relacional con `pg.Pool`:** Conexiones SSL, `CREATE TABLE IF NOT EXISTS` y relaciones 1:N con `ON DELETE CASCADE`.
+* **Matriz Comparativa:** Consistencia ACID, límites de conexiones, migraciones y escalabilidad.
+
+👉 **[Abrir el Módulo 5](./materiales_didacticos/05-despliegue-postgresql-vs-mongodb.md)**
 
 ---
 
 ### 🛡️ [Módulo 6: Despliegue Seguro, DevSecOps y Hardening Web](./materiales_didacticos/06-despliegue-seguro-devsecops-owasp.md)
-*Basado en la colección de 9 láminas infográficas de la carpeta [`materiales_didacticos/seguridad_despliegues/`](./materiales_didacticos/seguridad_despliegues/).*
+* **SQL Injection vs NoSQL Injection en código real.**
+* **Análisis de tráfico con Wireshark:** Interceptación de texto plano y cifrado TLS 1.3.
+* **Hardening:** Cabeceras HTTP con `helmet`, rate limiting, contenedores no-root y escaneo con Trivy.
 
-* **Inyecciones en código real:** Demostración práctica de **SQL Injection** en PostgreSQL (concatenación vs parámetros preparados `$1`) y **NoSQL Injection** en MongoDB (operador `$gt: ""` vs `mongo-sanitize`).
-* **Interceptación de tráfico con Wireshark y Kali Linux:** Por qué el HTTP en texto plano permite a un atacante en la red interceptar contraseñas mediante ARP Spoofing y cómo TLS 1.3 lo neutraliza.
-* **Blindaje del servidor Express:** Cabeceras HTTP con `helmet` (CSP, HSTS, anti-clickjacking), limitación de peticiones con `express-rate-limit` (error 429) y políticas de CORS.
-* **Dockerfiles seguros y no-root:** Ejecución obligatoria con `USER node`, exclusiones con `.dockerignore` y escaneo de vulnerabilidades con **Trivy**.
-* **Kubernetes seguro:** `securityContext` (`readOnlyRootFilesystem`, `drop ALL capabilities`), **Network Policies** Pod-a-Pod y RBAC.
-* **DevSecOps en CI/CD:** Controles automáticos de secretos (Gitleaks, TruffleHog), análisis SCA (`npm audit`, Snyk) y firmas de imágenes con **Cosign**.
-* **Checklist interactivo de 8 puntos** y escalera de madurez de seguridad.
-
-👉 **[Hacer clic aquí para abrir el Módulo 6](./materiales_didacticos/06-despliegue-seguro-devsecops-owasp.md)**
+👉 **[Abrir el Módulo 6](./materiales_didacticos/06-despliegue-seguro-devsecops-owasp.md)**
 
 ---
 
 ### 🐘 [Módulo 7: PostgreSQL: Arquitectura, Esquemas, Passwords e Inicialización](./materiales_didacticos/07-postgresql-arquitectura-esquemas-passwords.md)
-*Basado en la colección de 6 láminas infográficas de la carpeta [`materiales_didacticos/postgres_schemas_passwords_init/`](./materiales_didacticos/postgres_schemas_passwords_init/).*
+* **La metáfora del edificio:** Instancia ➔ Base de datos ➔ Esquema ➔ Tablas.
+* **El debate de `SCHEMA` vs `NAMESPACE`:** Código C de PostgreSQL (`pg_namespace`) y ANSI SQL-92.
+* **Misterio de `search_path` y `public`:** Gestión de contraseñas de roles y scripts de automatización con Python.
 
-* **Anatomía del motor relacional:** La metáfora del edificio: Instancia (edificio) ➔ Base de datos (apartamento cerrado) ➔ Esquema (armario/habitación) ➔ Tablas (cajones) ➔ Roles (conserje con llaves).
-* **El debate terminológico «Schema»:** Por qué en Mongoose/Avro un schema define la forma de los datos, mientras que en SQL define un contenedor/espacio de nombres. Origen en ANSI SQL-92 y la prueba en el código C de PostgreSQL (`pg_namespace`).
-* **Gestión de contraseñas de roles:** Pertenencia al rol (no a la base), cambio seguro en pgAdmin y con `\password` en `psql` (sin rastro en historiales), y diferencias con la Master Password de pgAdmin.
-* **Inicialización DDL y nombres en SQL:** Por qué crear la base no crea tus tablas. Comillas dobles (`"todolistDB"`) vs minúsculas por defecto (`todolistdb`).
-* **El misterio de `public` y `search_path`:** Cómo resuelve PostgreSQL los nombres no cualificados (`"$user", public`), `SHOW search_path` y el endurecimiento de permisos en PostgreSQL 15+.
-* **Esquemas personalizados:** `CREATE SCHEMA`, mover tablas con `ALTER TABLE SET SCHEMA`, llaves de acceso (`USAGE` vs permisos DML) y la diferencia entre el esquema `public` y el pseudo-rol `PUBLIC`.
-* **Automatización con Python (`psycopg2`):** Conexión segura, `conn.autocommit = True` obligatorio para `CREATE DATABASE`, protección contra inyecciones DDL con `psycopg2.sql.Identifier` y lectura de secretos con `getpass`.
+👉 **[Abrir el Módulo 7](./materiales_didacticos/07-postgresql-arquitectura-esquemas-passwords.md)**
 
-👉 **[Hacer clic aquí para abrir el Módulo 7](./materiales_didacticos/07-postgresql-arquitectura-esquemas-passwords.md)**
+---
+
+## 🛠️ Guías Rápidas de Apoyo Técnico para MySQL
+
+En [`materiales_didacticos/mysql_guias_apoyo/`](./materiales_didacticos/mysql_guias_apoyo/) dispones de soluciones rápidas a dudas técnicas habituales:
+- 📄 [01. Migración de PostgreSQL a MySQL (Cheat Sheet de drivers y placeholders)](./materiales_didacticos/mysql_guias_apoyo/01_migracion_postgres_a_mysql.md)
+- 📄 [02. Laboratorio Didáctico de JOINs (INNER vs LEFT JOIN y Retos para alumnos)](./materiales_didacticos/mysql_guias_apoyo/02_ejercicio_avanzado_joins.md)
+- 📄 [03. Ciclo de Vida de Node, Liberación de Puertos y Enrutamiento en Express](./materiales_didacticos/mysql_guias_apoyo/03_reinicio_node_y_enrutamiento_express.md)
+- 📄 [04. Resolución Didáctica Paso a Paso de Errores y Bugs Comunes](./materiales_didacticos/mysql_guias_apoyo/04_resolucion_paso_a_paso_bugs.md)
 
 ---
 
 ## ⚡ Guía Rápida de Arranque en Local
 
-Para poner en marcha la práctica estrella [**`awcodeAtlas.js`**](./awcodeAtlas.js) en tu máquina local:
-
-### 1. Clonar el repositorio e instalar dependencias
+### 1. Clonar el repositorio (o tu Fork) e instalar dependencias
 ```bash
-git clone https://github.com/fjbanezares/express-mongo-hands-on.git
+git clone https://github.com/TU_USUARIO/express-mongo-hands-on.git
 cd express-mongo-hands-on
 npm install
 ```
 
-### 2. Configurar tus credenciales de MongoDB Atlas
-Crea un archivo llamado `.env` en la raíz del proyecto (este archivo nunca debe subirse a Git):
-```env
-PORT=3000
-MONGODB_ATLAS_URI=mongodb+srv://<tu_usuario>:<tu_password>@cluster0.xxxxx.mongodb.net/todolistDB?retryWrites=true&w=majority
-```
+### 2. Iniciar el servidor según la versión que quieras probar
 
-> [!TIP]
-> Recuerda configurar en el panel de MongoDB Atlas:
-> 1. En **Database Access**: un usuario y contraseña dedicados para la base de datos (con rol `readWriteAnyDatabase`).
-> 2. En **Network Access**: tu dirección IP actual o `0.0.0.0/0` para permitir accesos desde plataformas cloud.
-
-### 3. Iniciar el servidor (Elige tu motor de Base de Datos)
-
-* **Opción A: Versión MongoDB Atlas (NoSQL)**
+* **🐬 Opción A: MySQL en Local (Práctica Semana Actual)**
   ```bash
-  node awcodeAtlas.js
-  # o con npm:
-  npm start
+  # Versión base con 2 tablas:
+  npm run start:mysql         # ejecuta node awcodeMySQL.js
+
+  # Versión avanzada con 3 tablas, Urgencias y JOINs:
+  npm run start:mysql:join    # ejecuta node awcodeMySQLJoin.js
   ```
 
-* **Opción B: Versión PostgreSQL (SQL Relacional)**
+* **🍃 Opción B: MongoDB Atlas en la Nube (Práctica Siguiente Semana)**
   ```bash
-  node awcodePostgres.js
-  # o con npm:
-  npm run start:postgres
+  npm start                   # ejecuta node awcodeAtlas.js
   ```
 
-Abre tu navegador en `http://localhost:3000` y prueba:
-* Añadir y tachar tareas en la lista `"Today"`.
-* Crear listas personalizadas accediendo a rutas como `http://localhost:3000/trabajo` o `http://localhost:3000/viajes`.
+* **🐘 Opción C: PostgreSQL en Local / Cloud**
+  ```bash
+  npm run start:postgres      # ejecuta node awcodePostgres.js
+  ```
+
+Abre tu navegador en `http://localhost:3000` y prueba añadir tareas, listas y eliminarlas.
 
 ---
 
-## 🖼️ Galería de Infografías Incluidas
+## 🖼️ Las 4 Colecciones de Infografías (48 Láminas en Total)
 
-El repositorio incluye **36 infografías de alta calidad** organizadas dentro de [`materiales_didacticos/`](./materiales_didacticos/) en tres carpetas temáticas:
+Todas las infografías originales en alta resolución se encuentran organizadas en carpetas temáticas dentro de [`materiales_didacticos/`](./materiales_didacticos/):
 
-| Bloque Temático | Carpeta / Archivos | Láminas | Tema Central |
+| Colección | Ubicación | Láminas | Temática |
 | :--- | :--- | :---: | :--- |
-| **Bloque 1: Persistencia & Criterio** | [`inforgrafia_despliegue_atlas/`](./materiales_didacticos/inforgrafia_despliegue_atlas/) | 4 | Memoria vs BD, MongoDB+Mongoose+Atlas, Comparativa con Postgres y veredicto de arquitectura. |
-| **Bloque 2: Práctica y Código** | [`inforgrafia_despliegue_atlas/`](./materiales_didacticos/inforgrafia_despliegue_atlas/) | 6 | Anatomía de `awcodeAtlas.js`, EJS, CRUD completo, modelos embebidos, PRG y Atlas Cloud. |
-| **Bloque 3: Despliegues & DevOps** | [`inforgrafia_despliegue_atlas/`](./materiales_didacticos/inforgrafia_despliegue_atlas/) | 6 | Render, Dockerfile, Kubernetes, Hyperscalers (AWS/GCP/Azure), OCI/Alibaba y Pipelines CI/CD. |
-| **Bloque 4: Balanceadores & Redes** | [`inforgrafia_despliegue_atlas/`](./materiales_didacticos/inforgrafia_despliegue_atlas/) | 5 | Balanceadores L4/L7, Estrategias Zero-Downtime, Ingress/Routes, DNS End-to-End y Namespaces. |
-| **Bloque 5: Despliegue Seguro & DevSecOps** | [`seguridad_despliegues/`](./materiales_didacticos/seguridad_despliegues/) | 9 | Amenazas OWASP, SQL/NoSQL Injection, Secretos, Helmet, Docker no-root, TLS, K8s Pod Security y CI/CD. |
-| **Bloque 6: PostgreSQL Arquitectura, Esquemas & Passwords** | [`postgres_schemas_passwords_init/`](./materiales_didacticos/postgres_schemas_passwords_init/) | 6 | Dónde vive cada cosa, contraseñas de rol (pgAdmin/psql), DDL y mayúsculas, `search_path`, esquemas propios y Python seguro. |
-
-👉 **[Explorar infografías de Despliegue y Redes](./materiales_didacticos/inforgrafia_despliegue_atlas/)**  
-👉 **[Explorar infografías de Despliegue Seguro](./materiales_didacticos/seguridad_despliegues/)**  
-👉 **[Explorar infografías de PostgreSQL Arquitectura y Esquemas](./materiales_didacticos/postgres_schemas_passwords_init/)**
+| **Colección 1: MySQL y La Vida de una Tarea** | [`infografia_app_todolist_mysql/`](./materiales_didacticos/infografia_app_todolist_mysql/) | **12** | V8, npm, 3 capas, pools DDL, mapeo SQL, SSR con EJS, POST/PRG, DELETE, rutas dinámicas y Event Loop. |
+| **Colección 2: Atlas, Despliegues, Docker y K8s** | [`inforgrafia_despliegue_atlas/`](./materiales_didacticos/inforgrafia_despliegue_atlas/) | **21** | Persistencia vs RAM, CRUD completo, Dockerfiles Alpine, K8s Pods/Services, Hyperscalers, Balanceadores L4/L7 y DNS. |
+| **Colección 3: Ciberseguridad y DevSecOps** | [`seguridad_despliegues/`](./materiales_didacticos/seguridad_despliegues/) | **9** | Inyecciones SQL/NoSQL, capturas Wireshark, Helmet, Docker no-root, K8s Pod Security y pipelines seguros. |
+| **Colección 4: PostgreSQL Arquitectura y Esquemas** | [`postgres_schemas_passwords_init/`](./materiales_didacticos/postgres_schemas_passwords_init/) | **6** | Metáfora del edificio, roles, esquemas ANSI SQL-92, `search_path`, public y Python seguro. |
 
 ---
 
