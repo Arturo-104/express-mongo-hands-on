@@ -1,12 +1,36 @@
 <!-- This line includes the "header" partial, which contains common HTML header elements, such as stylesheets or navigation bars. -->
 <%- include("header") -%>
 
-  <div class="box" id="heading">
-    <!-- Outputs the listTitle variable where the list's title is displayed in a header tag. -->
-    <h1>
-      <%= listTitle %>
-    </h1>
-  </div>
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+
+  <% if (typeof allLists !== "undefined") { %>
+    <div style="padding: 0 20px 20px;">
+      <label for="listSelector"
+             style="display: block; color: white; margin-bottom: 10px;">
+        Listas tareas de Arturo Santos
+      </label>
+
+      <select id="listSelector"
+              style="width: 100%; padding: 10px; border-radius: 6px;"
+              onchange="window.location.href = this.value === 'Today' ? '/' : '/' + encodeURIComponent(this.value);">
+
+        <option value="Today" <%= listTitle === "Today" ? "selected" : "" %>>
+          Today
+        </option>
+
+        <% allLists.forEach(function(list) { %>
+          <% if (list.name !== "Today") { %>
+            <option value="<%= list.name %>"
+                    <%= listTitle === list.name ? "selected" : "" %>>
+              <%= list.name %>
+            </option>
+          <% } %>
+        <% }); %>
+      </select>
+    </div>
+  <% } %>
+</div>
 
   <div class="box">
     <!-- This is a loop using EJS templating. For each item in the newListItems array, the function is executed. -->
