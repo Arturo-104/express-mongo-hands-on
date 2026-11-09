@@ -21,6 +21,10 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
+// Evitar que el icono del navegador cree una lista.
+app.get("/favicon.ico", (req, res) => {
+    res.status(204).end();
+});
 
 // Configuración de conexión local a MySQL
 const DB_HOST = process.env.DB_HOST || "localhost";
