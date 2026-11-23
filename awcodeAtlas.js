@@ -16,14 +16,26 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// Evita crear listas con las peticiones automáticas del navegador.
+app.get("/favicon.ico", (req, res) => {
+    res.status(204).end();
+});
+
+app.get("/robots.txt", (req, res) => {
+    res.type("text/plain").send("User-agent: *\nDisallow: /");
+});
+
+// Esta ruta debe ir antes de la ruta de listas personalizadas.
+app.get("/about", (req, res) => {
+    res.render("about");
+});
 // Connect to a MongoDB database named todolistDB with a deprecation fix for the URL parser
 //mongoose.connect("mongodb://localhost:27017/todolistDB", { useNewUrlParser: true });
 //const MONGODB_ATLAS_URI = "mongodb+srv://fjbanezares:Pepito123@cluster0.h5kauwo.mongodb.net/?retryWrites=true&w=majority"
 
 
 
-const MONGODB_ATLAS_URI = "mongodb+srv://fjbanezares:Pepito123@cluster0.n87gd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(MONGODB_ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+const MONGODB_ATLAS_URI = process.env.MONGODB_URI;
 
 
 // Define a schema for the items in the to-do list, consisting of a single field 'name'
@@ -62,7 +74,14 @@ app.get("/", async (req, res) => {
             res.redirect("/");
         } else {
             // If items are found, render the 'list' EJS template with the found items
-            res.render("list", { listTitle: "Today", newListItems: foundItems });
+            const allLists = await List.find({}, "name").sort({ name: 1 });
+
+res.render("list", {
+    listTitle: "Today",
+    newListItems: foundItems,
+    allLists: allLists
+});
+            
         }
     } catch (err) {
         // Log any errors and send a server error response
@@ -90,7 +109,13 @@ app.get("/:customListName", async (req, res) => {
             res.redirect("/" + customListName);
         } else {
             // If the list exists, render it with its items
-            res.render("list", { listTitle: foundList.name, newListItems: foundList.items });
+            const allLists = await List.find({}, "name").sort({ name: 1 });
+
+res.render("list", {
+    listTitle: foundList.name,
+    newListItems: foundList.items,
+    allLists: allLists
+});
         }
     } catch (err) {
         // Log any errors and send a server error response
@@ -151,15 +176,31 @@ app.post("/delete", async (req, res) => {
     }
 });
 
-// Handle GET requests to the "about" page
-app.get("/about", (req, res) => {
-    res.render("about"); // Render the 'about' EJS template
-});
-
-
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, function () {
-    console.log("Server started on port", PORT);
-});
+async function iniciarServidor() {
+    if (!MONGODB_ATLAS_URI) {
+        console.error("Falta configurar la variable MONGODB_URI.");
+        process.exit(1);
+    }
+
+    try {
+        await mongoose.connect(MONGODB_ATLAS_URI, {
+            dbName: "todolistDB"
+        });
+
+        console.log("Conectado a MongoDB Atlas: todolistDB");
+
+        app.listen(PORT, "0.0.0.0", () => {
+            console.log("Servidor iniciado en el puerto", PORT);
+        });
+    } catch (error) {
+        console.error(
+            "No se ha podido conectar con Atlas. Revisa la conexión, las credenciales y el acceso de red."
+        );
+        process.exit(1);
+    }
+}
+
+iniciarServidor();
